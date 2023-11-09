@@ -1,12 +1,12 @@
 #include "hsh.h"
 /**
- * read - read a line from the stream
+ * re - read a line from the stream
  * Return: pointer that points the the read line
  */
-char *read(void)
+char *re(void)
 {
 	int g, ch, size;
-	char *line;
+	char *in;
 	char *x = "allocation error in read_stream\n";
 	char *y = "reallocation error in read_stream\n";
 
