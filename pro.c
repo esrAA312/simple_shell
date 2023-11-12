@@ -16,9 +16,9 @@ int proc(char **args)
 	{
 		if (execvp(args[0], args) == -1)
 		{
-			perror("./shell");
+			error(args[0]);
 		}
-		exit(EXIT_FAILURE);
+		return (127);
 	}
 	else if (ID < 0)
 	{
@@ -38,7 +38,7 @@ int proc(char **args)
 
 				if (exit_status == 2) 	
 					return (2);
-			 else if (exit_status == 127)
+				else if (exit_status == 127)
 					return (127); }
 
 			else {

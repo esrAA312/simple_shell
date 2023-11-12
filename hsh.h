@@ -9,7 +9,7 @@
 
 #define BUFFER_SIZE 1024
 #define EXPECTED_DELIM " \t\r\n\a\\"
-
+void error(char *arg_v);
 char *replaceVariables(char *input);
 int _putchar(char c);
 void _puts(char *str);
