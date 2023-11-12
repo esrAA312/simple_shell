@@ -8,8 +8,8 @@
  */
 int proc(char **args)
 {
-	pid_t ID;
-	int s;
+	pid_t ID, wy;
+	int s, exit_status = 0;
 
 	ID = fork();
 	if (ID ==  0)
@@ -27,26 +27,26 @@ int proc(char **args)
 	else
 	{
 		do {
-			waitpid(ID, &s, WUNTRACED);
+			wy = waitpid(ID, &s, WUNTRACED);
 		} while (!WIFEXITED(s) && !WIFSIGNALED(s));
+
+		if (wy == -1) {
+			perror("witpid error");
+		} else {
+			if (WIFEXITED(s)) {
+				exit_status = WEXITSTATUS(s);
+
+				if (exit_status == 2) 	
+					return (2);
+			 else if (exit_status == 127)
+					return (127); }
+
+			else {
+				printf("Child process exited with status %d\n", exit_status);
+			} }
+
+
+
 	}
 	return (-1);
-}
-/**
- * _strncmp - This program compares the first n characters of two strings.
- *@str1:First string to be competed.
- *@str2: Second string to be competed.
- * @n: Number of characters to compare.
- *Return: negative, positive or zero integer.
- */
-
-int _strncmp(char *str1, char *str2, int n)
-{ int i, diff;
-
-	for (i = 0; i < n; i++)
-	{
-		diff = str1[i] - str2[i];
-		if (diff > 0 || diff < 0)
-			return (diff); }
-	return (0);
 }
