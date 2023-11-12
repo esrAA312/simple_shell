@@ -1,3 +1,8 @@
+/**
+ * error - Print an error message indicating command not found.
+ * @arg_v: The command or file name causing the error.
+ *.
+ */
 #include "hsh.h"
 void error(char *arg_v)
 {

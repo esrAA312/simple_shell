@@ -29,24 +29,22 @@ int proc(char **args)
 		do {
 			wy = waitpid(ID, &s, WUNTRACED);
 		} while (!WIFEXITED(s) && !WIFSIGNALED(s));
-
-		if (wy == -1) {
+		if (wy == -1)
+		{
 			perror("witpid error");
-		} else {
-			if (WIFEXITED(s)) {
+		} else
+		{
+			if (WIFEXITED(s))
+			{
 				exit_status = WEXITSTATUS(s);
-
-				if (exit_status == 2) 	
+				if (exit_status == 2)
 					return (2);
 				else if (exit_status == 127)
 					return (127); }
-
-			else {
+			else
+			{
 				printf("Child process exited with status %d\n", exit_status);
 			} }
-
-
-
 	}
 	return (-1);
 }
